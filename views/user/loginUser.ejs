@@ -1,0 +1,38 @@
+<%- include("../partials/header"); %>
+
+<link rel="stylesheet" href="/stylesheets/form.css">
+<link rel="stylesheet" href="/stylesheets/auth.css">
+
+<%- include("../partials/navbar"); %>
+
+<div class="container initial-container">
+    <% if(error && error.length > 0){ %>
+        <div class="alert error">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <% if(success && success.length > 0){ %>
+        <div class="alert success">
+            <%= success %>
+        </div>
+    <% } %>
+    
+    <div class="form-container">
+        <h1 class = "form-heading mb-5">Welcome back!</h1>
+        
+        <form action="/login" method="POST" class="ui form"></form>
+            <div class="field">
+                <label class = "label" for = "username">Username</label>
+                <input class = "form-input" type="text" name="username" id = "username" placeholder = "Your username" required>
+            </div>
+
+            <div class="field">
+                <label class = "label" for = "password">Password</label>
+                <input class = "form-input" type="text" name="password" id = "password" placeholder = "Your password" required>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include("../partials/footer"); %>

@@ -1,0 +1,320 @@
+<%- include("../partials/header"); %>
+
+<link rel="stylesheet" href="/stylesheets/show.css"/>
+
+<%- include("../partials/navbar"); %>
+
+<div class="container initial-container">
+    <% if(error && error.length > 0){ %>
+        <div class="alert error">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <% if(success && success.length > 0){ %>
+        <div class="alert success">
+            <%= success %>
+        </div>
+    <% } %>
+
+    <div class="product-showcase">
+        <div id = "productCarousel" class = "carousel slide" data-ride = "carousel" data-interval = "false">
+            <!-- <ol class="carousel-indicators">
+                <li data-target="#productCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#productCarousel" data-slide-to="1"></li>
+                <li data-target="#productCarousel" data-slide-to="2"></li>
+            </ol> -->
+            <div class="carousel-inner w-100 h-100">
+                <% product.images.forEach((image, i) => { %>
+                    <div class = "carousel-item w-100 h-100 <%= (i == 0) ? 'active' : 'not-active' %>">
+                        <img src = "<%= image.url %>" class = "" alt="..."> 
+                    </div>
+                <% }) %>
+            </div>
+
+            <% if(product.images.length > 1){ %> 
+                <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+                    <span class = "carousel-control-icon" aria-hidden="true"><i class="fas fa-arrow-left"></i></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+                    <span class = "carousel-control-icon" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            <% } %>
+        </div>
+    
+        <div class= "product-overview">
+            <div class = "product-name text-center w-100 section-heading"><%= product.name %></div>
+            
+            <div class = "product-header d-flex justify-content-between align-items-center pl-1.5 mt-3">
+                <% if(product.averageRating != 0.0){ %>
+                    <div class = "product-rating d-flex justify-content-between align-items-center pb-3">
+                        <%= product.averageRating %> <i class="fas fa-star d-inline pb-1 mt-1"></i>
+                    </div>
+                <% } %>
+                
+                <% if(currentUser){ %>
+                    <% if(currentUser.isAdmin){ %>
+                        <div class = "action-container">
+                            <a href = "/lineups/<%= lineup._id %>/" class="icon-button"><i class="fas fa-level-up-alt"></i></a>
+                            <a href = "/products/<%= product._id %>/edit" class="icon-button"><i class="fas fa-edit"></i></a>
+                            <!-- <a href = "/products/<%= product._id %>/confirm" class="icon-button"><i class="icon-button far fa-trash-alt"></i></a> -->
+                        </div>
+                    <% } %>
+                <% } %>
+            </div>
+            <div class = "product-details">
+                <table class="table table-borderless product-table mb-4">
+                    <tbody>
+                        <tr>
+                            <td>Price</td>
+                            <td class = "product-details-separator text-center">:</td>
+                            <td class = "product-details-value text-right">Rs <%= product.price %></td>
+                        </tr>
+                        <tr>
+                            <td>Size</td>
+                            <td class = "product-details-separator text-center">:</td>
+                            <td class = "product-details-value text-right"><%= product.size %></td>
+                        </tr>
+                        <tr>
+                            <td>Colour</td>
+                            <td class = "product-details-separator text-center">:</td>
+                            <td class = "product-details-value text-right"><%= product.colour %></td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <table class="table table-borderless product-table mb-4">
+                    <tbody>
+                        <tr>
+                            <td>Number of units</td>
+                            <td class = "product-details-separator text-center">:</td>
+                            <td class = "product-details-value text-right"><%= product.noOfUnits %></td>
+                        </tr>
+                        <tr>
+                            <td>In Stock</td>
+                            <td class = "product-details-separator text-center">:</td>
+                            <td class = "product-details-value text-right"><%= product.stock %></td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <table class="table table-borderless product-table">
+                    <tbody>
+                        <tr>
+                            <td>Category</td>
+                            <td class = "product-details-separator text-center">:</td>
+                            <td class = "product-details-value text-right"><%= product.category %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% const oneSize = lineup.sizeList.length === 1; %>
+<% const oneColour = lineup.variations[product.sizeNumber - 1].colours.length === 1; %>
+
+<% if(!((oneSize) && (oneColour))) { %> 
+    <div class = "container product-variations">
+        <% if(!oneSize){ %>
+            <div class="product-variations-section%>">
+                <% for(let i = 0; i < lineup.sizeList.length; i++){ %>
+                    <% const productNumber = `${product.lineupNumber}${i+1}${product.colourNumber}`; %>
+                    <a href = "/products/variations/<%= product.lineupNumber %>/<%= productNumber %>/<%= i + 1 %>" class = "<%= ((i + 1) === product.sizeNumber) ? 'selected' : 'not-selected' %> product-variations-item">
+                        <%= lineup.sizeList[i] %>
+                    </a>
+                <% } %>
+            </div>
+        <% } %>
+
+        <div class="product-variations-section%>">
+            <% for(let i = 0; i < lineup.variations[product.sizeNumber - 1].colours.length; i++){ %>
+                <% const productNumber = `${product.lineupNumber}${product.sizeNumber}${i+1}`; %>
+                <a href = "/products/variations/<%= product.lineupNumber %>/<%= productNumber %>/<%= product.sizeNumber %>" class = "<%= ((i + 1) === product.colourNumber) ? 'selected' : 'not-selected' %> product-variations-item">
+                    <%= lineup.variations[product.sizeNumber - 1].colours[i] %>
+                </a>
+            <% } %>  
+        </div>
+    </div>
+<% } %>
+
+<div class="third container">
+    <div class = "box product-section purchase">
+        <% if(currentUser && product.stock === "Yes"){ %>
+            <div class = "product-heading mb-5">Purchase</div>
+
+            <!-- <hr class = "line purchase-line"> -->
+    
+            <div class="product-links">
+                <form class = "product-form" action="/products/<%= product._id %>/checkout" method="POST">
+                    <input type = "text" name = "customisation" class = "d-none form-customisation">
+                    <input type = "number" name = "quantity" class = "d-none form-quantity" min = "1" max = "10">
+                    <button type = "submit" class="ui button submitButton">Buy Now</button>
+                </form>
+
+                <form class = "product-form" action = "/users/<%= currentUser._id %>/cart/products/<%= product._id %>" method = "POST">
+                    <input type = "text" name = "customisation" class = "d-none form-customisation">
+                    <input type = "number" name = "quantity" class = "d-none form-quantity" min = "1" max = "10">
+                    <button type = "submit" class="ui button submitButton">Add to cart</button>
+                </form>
+    
+                <form class = "product-form" action = "/users/<%= currentUser._id %>/wishlist/products/<%= product._id %>" method = "POST">
+                    <input type = "text" name = "customisation" class = "d-none form-customisation">
+                    <input type = "number" name = "quantity" class = "d-none form-quantity" min = "1" max = "10">
+                    <button type = "submit" class="ui button submitButton">Save to wishlist</button>
+                </form>
+            </div>
+
+            <div class = "product-quantity mb-4">
+                <div class = "mb-2">How many?</div>
+                <input class = "form-control-lg" type = "number" id = "quantity" value = "1" min = "1" max = "10">
+            </div>
+        <% }else if(product.stock === 'No'){ %>
+            <div class = "text-center">This item is currently out of stock</div>
+
+            <% if(currentUser){ %>
+                <% if(!product.notificationList.includes(currentUser._id)){ %>
+                    <div class = "text-center">Woulf you like to be notified when this product is back in stock?</div>
+
+                    <div class = "mx-auto my-3">
+                        <form class = "product-form" action = "/products/<%= product._id %>/notify?_method=PUT" method = "POST">
+                            <button type = "submit" class="ui button">Notify Me</button>
+                        </form>
+                    </div>
+                <% }else{ %>
+                    <div class = "text-center">We'll send an email to your registered email address when this product is back in stock</div>
+                <% } %>
+            <% } %>
+        <% }else{ %>
+            <div class = "sub-heading">Sign in to unlock purchases</div>
+            <div class = "mx-auto">
+                <a href = "/login" class="ui button">Sign In</a>
+            </div>
+        <% } %>
+    </div>
+
+    <% if(currentUser && product.stock === "Yes"){ %>
+        <div class = "box product-section personalisation">
+            <div class = "product-heading mb-4">Personalise</div>
+
+            <label for = "customisation" class = "sub-heading mb-4">Think it could do with a personal touch? Want to make it your own?</label>
+
+            <div class="ui form">
+                <div class="inline fields customisation">
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name = "customisation" tabindex="0" class="hidden" value = "Custom" id = "customisation_none">
+                            <label class = "ml-1" for="customisation_none">Sure!</label>
+                        </div>
+                    </div>
+    
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name = "customisation" tabindex="0" class="hidden" value = "None" id = "customisation_custom" checked>
+                            <label class = "ml-1" for="customisation_custom">No, I'm good</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hide text-center" id = "customText">
+                We'll contact you through the phone number associated with your account, to discuss what you have in mind.
+            </div>
+        </div>
+    <% } %>
+
+    <div class = "box product-section">
+        <div class = "product-heading mb-5">
+            Description
+        </div>
+
+        <div class = "text-center" id = "product_description"><%= product.description %></div>
+    </div>
+
+    <div class="product-section text-center">
+        <div class = "box header">
+            <span>Specifications</span>
+        </div>
+
+        <div class="box table-box mb-0">
+            <table class="table table-borderless product-table">
+                <thead>
+                    <tr class = "table-row">
+                        <th scope="col" class = "table-row-element">Type</th>
+                        <th scope="col" class = "table-row-element">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let key in product.specifications){ %>
+                        <% if(product.specifications[key] && product.specifications.hasOwnProperty(key) && key !== '$init'){ %>
+                            <tr class = "table-row">
+                                <td class = "table-row-element"><%= key %></td>
+                                <td class = "table-row-element"><%= product.specifications[key] %></td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                    <% if(currentUser){ %>
+                        <% if(currentUser.isAdmin){ %>
+                            <tr class = "table-row">
+                                <td class = "table-row-element">Lineup Number</td>
+                                <td class = "table-row-element"><%= product.lineupNumber %></td>
+                            </tr>
+                            <tr class = "table-row">
+                                <td class = "table-row-element">Product Number</td>
+                                <td class = "table-row-element"><%= product.productNumber %></td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="product-section">
+        <div class = "box header mb-5">
+            <span>Customer Reviews</span>
+        </div>
+
+        <% if(hasBoughtProduct  && !hasReviewedProduct){ %>
+            <div class = "mb-5">
+                <a class = "ui button review" href="/products/<%=product._id%>/reviews/new">Write a review</a>
+            </div>
+        <% } %>
+
+        <% if(product.reviews.length !== 0){ %>
+            <% product.reviews.forEach(review =>{ %>
+                <div class = "box product-review">
+                    <div class = "mb-3">
+                        <span class = "product-review-author mr-4"><%= review.author.username %></span>
+                        <span class = "product-review-rating"><span><%= review.rating %></span> <i class="fas fa-star"></i></span>
+                    </div>
+                    <div class = "product-review-content"><%= review.text %></div>
+                </div>
+            <% }) %>
+        <% }else{ %>
+            <div class = "text-center">This product hasn't been reviewed, yet</div>
+        <% } %>
+    </div>
+</div>
+
+<div class = "space"></div>
+
+<script src = "/scripts/show.js"></script>
+
+<script>
+     const submitButtons = document.querySelectorAll(".submitButton");
+
+    for (let index = 0; index < submitButtons.length; index++) 
+    {
+        submitButtons[index].onclick = function ()
+        {
+            deleteForms[index].submit();
+        }
+    }
+</script>
+
+<%- include("../partials/footer"); %>

@@ -1,0 +1,90 @@
+body
+{
+    color: #FAF9F9;
+    min-height: 100vh;
+}
+
+body::before
+{
+    background-image: url("https://res.cloudinary.com/dyokara/image/upload/v1610874838/App/login_landscape_nkomrb.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    opacity: 1;
+}
+
+.navbar
+{
+    background-color: #FAF9F9;
+}
+
+.form-container 
+{
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 5rem;
+    border-radius: 1rem;
+
+    width: fit-content;
+
+    margin: auto;
+    margin-top: 7.5%;
+
+    animation: render 1s ease-out;
+
+    margin-bottom: 2rem;
+}
+
+.ui.form .field .form-input
+{
+    color: #dee1eb;
+
+    background-color: rgba( 0 , 0 , 0 , 0.5);    
+    border-radius: 0.5rem;
+
+    transition: all 0.2s;
+
+    /* font-size: 2rem; */
+}
+
+.ui.form .field .form-input:focus
+{
+    background-color: rgba( 0 , 0 , 0 , 0.5);
+    border: 0.1rem solid #FAF9F9;
+    color: #FAF9F9;
+    border-radius: 0.5rem;
+}
+
+.ui.form .field .label
+{
+    text-align: left;
+    margin-bottom: 2rem;
+
+    font-weight: 800;
+    font-size: 2rem;
+    color: #FAF9F9;
+    letter-spacing: 0.25rem;
+}
+
+@media only screen and (max-width: 576px) 
+{
+    body::before
+    {
+        background-image: url("https://res.cloudinary.com/dyokara/image/upload/v1610874929/App/login_portrait_beng6o.jpg");
+        background-attachment: scroll;
+    }
+
+    .navbar
+    {
+        height: 6rem;
+    }
+
+    .navbar-light .navbar-nav .nav-link 
+    {
+        color: #FAF9F9;
+    }
+
+    .form-container
+    {
+        margin-top: 15%;
+    }
+}

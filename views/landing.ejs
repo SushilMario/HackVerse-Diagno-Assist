@@ -1,0 +1,20 @@
+<%- include("./partials/header"); %>    
+        
+    </head>
+
+    <body>
+        <link rel = "stylesheet" href = "/stylesheets/landing.css">
+
+        <div class = "landing-container">
+            <div class = "logo"></div>
+
+            <h1 class="main-heading">Welcome to Diag Assist!</h1>
+            <h2 class="sub-heading">Where patients and doctors work together, with the help of AI to arrive at the right diagnosis</h2>
+            <div class = "button-container">
+                <% if(!currentUser){ %>
+                    <a class = "ui button" href = "/login">Sign Up / Login</a>
+                <% } %>
+            </div>
+        </div>
+    </body>
+</html>

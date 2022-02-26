@@ -1,0 +1,148 @@
+.navbar
+{
+    margin-bottom: 6rem;
+}
+
+.row
+{
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 6rem;
+}
+
+.product
+{
+    display: flex;
+
+    font-size: 2rem;
+    
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 1.45rem;
+    padding-top: 2rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 30px;
+    height: fit-content;
+
+    /* background-color: rgb(255, 255, 255, 0.5); */
+
+    background-color: #FAF9F9;
+
+    letter-spacing: 0.1rem;
+
+    border-radius: 0.5rem;
+    box-shadow: 0 0.75rem 1.5rem rgba( 0 , 0 , 0 , 0.5);
+}
+
+.product-image
+{
+    /* height: 8rem;
+    width: 27rem; */
+    height: 21rem;
+    width: 21rem;
+
+    border-radius: 0.5rem;
+
+    transition: all 0.2s;
+}
+
+.product-image:hover
+{
+    opacity: 0.5;
+}
+
+.product-name
+{
+    width: 100%;
+
+    text-align: center;
+}
+
+.product-details
+{
+    width: 100%;
+    margin-top: 0.5rem;
+
+    height: fit-content;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media only screen and (max-width: 1199px) 
+{
+    .product-image
+    {
+        height: 25rem;
+        width: 25rem;
+    }
+}
+
+@media only screen and (max-width: 992px) 
+{
+    .product-image
+    {
+        height: 28rem;
+        width: 28rem;
+    }
+}
+
+@media only screen and (max-width: 768px) 
+{
+    .product-image
+    {
+        height: 20rem;
+        width: 20rem;
+    }
+}
+
+@media only screen and (max-width: 576px) 
+{
+    .category-box
+    {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .product
+    {
+        width: 25rem;
+    }
+}
+
+@media only screen and (max-width: 540px) 
+{
+    html 
+    {
+        font-size: 9px;
+    }
+
+    .col-6 
+    {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .col-6.col-md-6.col-lg-4.col-xl-3
+    {
+        display: flex;
+        justify-content: center;
+    }
+
+    .product
+    {
+        width: 30rem;
+    }
+
+    .product-image
+    {
+        height: 27rem;
+        width: 27rem;
+    }
+}

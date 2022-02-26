@@ -1,0 +1,83 @@
+<%- include("../partials/header"); %>
+
+    <link rel="stylesheet" href="/stylesheets/form.css">
+    <link rel="stylesheet" href="/stylesheets/auth.css">
+    <link rel="stylesheet" href="/stylesheets/longForm.css">
+
+</head>
+    
+<body>
+    <div class="container initial-container pt-5">
+        <div class="form-container mt-0">
+            <h1 class = "form-heading mb-5">Enter your details</h1>
+            <form action="/register" method="POST" class="ui form">
+                <div class="field">
+                    <label class = "label" for = "firstName">First Name</label>
+                    <input class = "form-input" type="text" name="firstName" id = "firstName" placeholder = "Your first name" required>
+                </div>
+
+                <div class="field">
+                    <label class = "label" for = "lastName">Last Name</label>
+                    <input class = "form-input" type="text" name="lastName" id = "lastName" placeholder = "Your last name" required>
+                </div>
+
+                <div class="field">
+                    <label class = "label" for = "phoneNumber">Phone Number</label>
+                    <input class = "form-input" type="text" name="phoneNumber" id = "phoneNumber" placeholder = "Your mobile number" required>
+                </div>
+                
+                <div class="field">
+                    <label class = "label" for = "line1">Address Line 1</label>
+                    <input class = "form-input" type="text" name="address[line1]" id = "line1" placeholder = "House / Apartment" required>
+                </div>
+
+                <div class="field">
+                    <label class = "label" for = "line2">Address Line 2</label>
+                    <input class = "form-input" type="text" name="address[line2]" id = "line2" placeholder = "Street / Locality" required>
+                </div>
+
+                <div class="field">
+                    <label class = "label" for = "city">City</label>
+                    <input class = "form-input" type="text" name="address[city]" id = "city" placeholder = "Your city" required>
+                </div>
+
+                <div class="field">
+                    <label class = "label" for = "state">State</label>
+                    <input class = "form-input" type="text" name="address[state]" id = "state" placeholder = "Your state" required>
+                </div>
+
+                <div class="field">
+                    <label class = "label" for = "pinCode">Pin Code</label>
+                    <input class = "form-input" type="text" name="address[pinCode]" id = "pinCode" placeholder = "Your pin Code" required>
+                </div>
+
+                <div class="field">
+                    <label class = "label" for = "username">Username</label>
+                    <input class = "form-input" type="text" name="username" id = "username" placeholder = "Your issued username" required>
+                </div>
+
+                <div class="field">
+                    <label class = "label" for = "password">Password</label>
+                    <input class = "form-input" type="text" name="password" id = "password" placeholder = "Your issued password" required>
+                </div>
+
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input type="checkbox" tabindex="0">
+                        <label>I am a member of hospital staff</label>
+                    </div>
+                </div>
+
+                <select class="custom-select" name = "role">
+                    <option selected>Select role</option>
+                    <option value="nurse">Nurse</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="admin">Admin</option>
+                </select>
+                
+                <button class = "ui button submit mt-3" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+<%- include("../partials/footer"); %>

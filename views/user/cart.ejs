@@ -1,0 +1,80 @@
+<%- include("../partials/header"); %>
+
+<link rel="stylesheet" href="/stylesheets/bag.css">
+
+<%- include("../partials/navbar"); %>
+
+<div class="container initial-container">
+    <% if(appointments.length == 0){ %>
+        <div class = "heading bag-heading m-auto">You have no upcoming appointments</div>
+    <% }else{ %>
+        <div class = "box header-box mb-5">
+            <div class = "main-heading">Upcoming appointments</div>
+        </div>
+    <% } %>
+
+    <% appointments.forEach(appointment => { %>
+        <div class = "appointment">
+            <h1 class = "text-center appointment-number section-heading"><%= appointment.product.name %></h1>
+
+            <div class = "appointment-primary-container">
+                <div class = "appointment-image-container">
+                    <a href='/appointments/<%= appointment._id %>''>
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </a>
+                </div>
+    
+                <div class="appointment-details container">
+                    <div class="row appointment-row">
+                        <div class = "col-4 appointment-column">
+                            <div class = "row appointment-details-row"><%= appointment.product.size %></div>
+                            <div class = "mt-3 row appointment-details-row">Quantity</div> 
+                            <div class = "mt-3 row appointment-details-row">
+                                <input type="number" name="quantity" class = "appointment-details-quantity text-center" value = "<%= appointment.quantity %>" min="1" max="10" step="1">
+                            </div>
+                            <div class = "mt-3 row appointment-details-row appointment-final-small"><%= appointment.customisation === 'Custom' ? '(Custom)' : '(Standard)' %></div>
+                        </div>
+    
+                        <div class = "col-4 appointment-column">
+                            <div class = "row appointment-details-row"><%= appointment.product.colour %></div>
+                            <div class = "mt-3 row appointment-details-row">Unit Price</div> 
+                            <div class = "mt-3 row appointment-details-row">
+                                Rs <%= appointment.product.price %>
+                            </div>
+                            <div class = "mt-3 row appointment-details-row appointment-final-small">
+                                <form action = "/users/<%= currentUser._id %>/appointments/products/<%= appointment.product._id %>?_method=DELETE" method = "POST">
+                                    <button class = "ui button delete" type="submit">Remove</button>
+                                </form>
+                            </div> 
+                        </div>
+    
+                        <div class = "col-4 appointment-column appointment-column-final appointment-final-big">
+                            <div class = "row appointment-details-row"><%= appointment.customisation === 'Custom' ? '(Custom)' : '(Standard)' %></div>
+                            <div class = "mt-3 row appointment-details-row">
+                                <form action = "/users/<%= currentUser._id %>/appointments/products/<%= appointment.product._id %>?_method=DELETE" method = "POST">
+                                    <button class = "ui button delete" type="submit">Remove</button>
+                                </form>
+                            </div> 
+                        </div>
+                    </div>
+    
+                    <div class = "d-none appointment-id"><%= appointment.product._id %></div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+
+    <% if(appointments.length > 0){ %>
+        <div class = "my-5">
+            <form action="/users/<%= currentUser._id %>/appointments/checkout" method="POST">
+                <button class = "ui button checkout" type="submit">Proceed to checkout</button>
+            </form>
+        </div>
+    <% } %>
+</div>
+
+<div class = "d-none" id = "user-id"><%= currentUser._id %></div>
+
+<script src = "/scripts/edit.js"></script>
+
+<%- include("../partials/footer"); %>

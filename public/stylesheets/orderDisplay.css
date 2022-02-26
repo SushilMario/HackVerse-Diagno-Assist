@@ -1,0 +1,330 @@
+.initial-container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.bag
+{
+    width: 45rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box.header-box, .box.header-box.primary
+{
+    width: 75%;
+}
+
+.order-box
+{
+    padding: 2rem;
+    padding-bottom: 0;
+}
+
+.heading
+{
+    font-size: 4rem;
+    font-weight: 500;
+    letter-spacing: 1rem;
+
+    text-align: center;
+
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 2rem rgba( 0 , 0 , 0 , 0.5);
+
+    letter-spacing: 1.5rem;
+    padding: 0 3.5rem;
+    padding-left: 5rem;
+
+    height: fit-content;
+
+    /* background-color: rgba(255, 255, 255, 0.25); */
+    background-color: #FAF9F9;
+
+    margin-bottom: 4rem;
+}
+
+.item
+{
+    /* display: flex;
+    justify-content: space-between;
+    position: relative; */
+
+    height: fit-content;
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 2rem;
+
+    /* background-color: rgb(255, 255, 255, 0.5); */
+
+    /* background-color: rgb(250, 249, 249, 1); */
+    background-color: rgba(255, 255, 255, 0);
+
+    letter-spacing: 0.1rem;
+
+    border-radius: 0.5rem;
+    box-shadow: none;
+    border: 0.1rem solid #553328;
+}
+
+.item-primary-container
+{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    height: fit-content;
+    width: 100%;
+}
+
+.item-image
+{
+    height: 10rem;
+    width: 10rem;
+    /* width: 60%; */
+    background-size: cover;
+    background-position: center;
+
+    margin-right: 1rem;
+
+    border: 0.1rem solid #553328;
+    border-radius: 0.5rem;
+
+    transition: all 0.2s;
+    opacity: 1;
+}
+
+.item-image:hover
+{
+    opacity: 0.5;
+}
+
+.item-details
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 1rem;
+
+    width: 100%;
+
+    font-size: 2rem;
+}
+
+.item-name
+{
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+
+    width: 100%;
+
+    margin-bottom: 2rem;
+}
+
+.item-sub_details
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment
+{
+    width: 45rem;
+    padding: 1rem 3.5rem;
+
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+
+    position: relative;
+    text-align: left;
+
+    font-size: 2rem;
+
+    border-radius: 0.5rem;
+
+    /* background-color: rgb(255, 255, 255, 0.5); */
+
+    background-color: #FAF9F9;
+
+    box-shadow: 0 1rem 2rem rgba( 0 , 0 , 0 , 0.5);
+}
+
+.payment-heading
+{
+    font-size: 3rem;
+    font-weight: 500;
+    text-align: center;
+
+    padding-left: 0.5rem;
+
+    letter-spacing: 0.2rem;
+}
+
+.payment-address
+{
+    font-size: 2rem;
+
+    padding-left: 1.5rem;
+}
+
+.head 
+{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.payment-table
+{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.payment-list-item
+{
+    margin: 0 2rem;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment-line-top
+{
+    border-top: 0.2rem solid #553328 !important;
+    margin: 0.5rem 0;
+}
+
+.payment-line-bottom
+{
+    border-bottom: 0.2rem solid #553328 !important;
+    margin: 0.5rem 0;
+}
+
+.payment-total
+{
+    font-size: 2rem;
+}
+
+table .payment-charges
+{
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.payment-gateway
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.ui.button.pay
+{
+    display: block;
+    width: fit-content;
+
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    margin-right: 0;
+}
+
+@keyframes render
+{
+    0%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 1200px) 
+{
+    .initial-container
+    {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .payment
+    {
+        margin: 4rem 0;
+    }
+}
+
+@media only screen and (max-width: 992px) 
+{
+    .box.header-box, .box.header-box.primary
+    {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 768px) 
+{
+    html 
+    {
+        font-size: 9px;
+    }
+    body
+    {
+        justify-content: center;
+    }
+    .payment
+    {
+        width: 47rem;
+    }
+}
+
+@media only screen and (max-width: 576px) 
+{
+    html 
+    {
+        font-size: 8.5px;
+    }
+
+    .bag, .heading, .payment
+    {
+        width: 100%;
+    }
+
+    .item-details
+    {
+        width: 80%;
+        padding: 0 0.75rem;
+    }
+
+    .item-sub_details
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 465px) 
+{
+    .box.header-box, .box.header-box.primary
+    {
+        width: 100%;
+    }
+
+    .item
+    {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 410px) 
+{
+    html
+    {
+        font-size: 8px;
+    }
+}

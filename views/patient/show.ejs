@@ -1,0 +1,63 @@
+<%- include("../partials/header"); %>
+
+<link rel="stylesheet" href="/stylesheets/adminIndex.css">
+
+<%- include("../partials/navbar"); %>
+
+<div class="container initial-container">
+    <div class = "box header-box">
+        <div class = "main-heading"><a href = "/categories" class = "link"><%= category.name %></a></div>
+    </div>
+
+    <% if(appointments.length != 0){ %>
+        <div class = "feature feature-header">
+            <div class="feature-details">
+                <span class = "feature-field">Appointment Number</span>
+            </div>
+
+            <div class="feature-details">
+                <span class = "feature-field">Name of Doctor</span>
+            </div>
+    
+            <div class="feature-details">
+                <span class = "feature-field">Time Slot</span>
+            </div>
+        </div>
+
+        <% appointments.forEach(appointment => { %>
+            <div class = "feature">
+                <div class="feature-details number">
+                    <a href = "/appointments/<%= appointment._id %>" class = "feature-field link"><%= appointment.appointmentNumber %></a>
+                </div>
+
+                <div class="feature-details number">
+                    <span class = "feature-field"><%= appointment.consultingDoctor %></span>
+                </div>
+        
+                <div class="feature-details number">
+                    <span class = "feature-field"><%= appointment.timeSlotStart %> - <%= appointment.timeSlotEnd %></span>
+                </div>
+                
+                <div class="feature-status">
+                    <a href = "/appointments/<%= appointment._id %>/edit" class="ui button feature-status">
+                        <i class = "fas fa-edit"></i>
+                    </a>
+                </div>
+
+                <div class="feature-status">
+                    <a href = "/appointments/<%= appointment._id %>/edit/production" class="ui button feature-status">
+                        <i class="fas fa-hammer"></i>
+                    </a>
+                </div>
+            </div>
+        <% }) %>
+    <% }else{ %>
+        <div class = "col-12 text-center display-4">No appointments yet!</div>
+    <% } %>
+
+    <div class = "my-5">
+        <a href="/categories/<%= category._id %>/appointments/new" class="ui button">New appointment</a>
+    </div>
+</div>
+
+<%- include("../partials/footer"); %>

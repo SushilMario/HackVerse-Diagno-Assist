@@ -1,0 +1,308 @@
+.container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heading
+{
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: 1.5rem;
+
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 2rem rgba( 0 , 0 , 0 , 0.5);
+
+    height: 6rem;
+
+    padding: 0 3.5rem;
+
+    text-align: center;
+
+    background-color: #FAF9F9;
+}
+
+.bag-heading
+{
+    letter-spacing: 0.75rem;
+
+    padding: 0 3rem;
+}
+
+.box.header-box
+{
+    width: 90%;
+}
+
+.item
+{
+    height: fit-content;
+    width: 80%;
+    padding: 1rem;
+    margin-bottom: 4rem;
+
+    background-color: #FAF9F9;
+
+    letter-spacing: 0.1rem;
+
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 2rem rgba( 0 , 0 , 0 , 0.5);
+}
+
+.item-name
+{
+    margin-bottom: 3rem;
+}
+
+.item-primary-container
+{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    height: fit-content;
+    width: 100%;
+}
+
+.item-image-container
+{
+    height: 10rem;
+    width: 10rem;
+    /* width: 25%; */
+    /* background-size: cover;
+    background-position: center; */
+
+    margin: auto 0;
+
+    border-radius: 0.5rem;
+}
+
+.item-image
+{
+    border-radius: 0.5rem;
+
+    transition: all 0.2s;
+
+    height: 100%;
+    opacity: 1;
+
+    border: 0.1rem solid #553328;
+}
+
+.item-image:hover
+{
+    opacity: 0.5;
+}
+
+.item-row
+{
+    width: 100%;
+}
+
+.item-column
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-final-small
+{
+    display: none;
+}
+
+.item-details
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: fit-content;
+    
+    width: 90%;
+
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.item-details-row
+{
+    text-align: center;
+}
+
+.ui.button
+{
+    font-size: 1.5rem;
+
+    width: 100%;
+
+    padding: 1rem;
+}
+
+.ui.button.checkout
+{
+    font-family: 'EB Garamond', serif;
+    font-size: 2.25rem;
+
+    width: fit-content;
+
+    height: 6rem;
+    padding: 0 4rem;
+
+    letter-spacing: 0.2rem;
+
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    
+    transition: all 0.25s;
+}
+
+.ui.button.delete:hover
+{
+    background-color: #e62d2d;
+    color: #FAF9F9;
+}
+
+/* .ui.button.checkout:hover
+{
+    color:#555B6E;
+    background-color: #FAF9F9; 
+    transform: translateY(-0.3rem);
+    box-shadow: 0 2rem 4rem rgba( 0 , 0 , 0 , 0.5); 
+}
+
+.ui.button.checkout:active
+{
+    transform: translateY(-0.1rem);
+    box-shadow: 0 1rem 2rem rgba( 0 , 0 , 0 , 0.5); 
+} */
+
+@media only screen and (max-width: 992px) 
+{
+    html 
+    {
+        font-size: 8px;
+    }
+
+    .box.header-box
+    {
+        width: 95%;
+    }
+
+    .item
+    {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 768px) 
+{
+    html 
+    {
+        font-size: 8.5px;
+    }
+
+    .container
+    {
+        max-width: 640px;
+    }
+
+    .box.header-box
+    {
+        width: 100%;
+    }
+
+    .item
+    {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 640px) 
+{
+    .item-details-container
+    {
+        width: 15rem;
+    }
+}
+
+@media only screen and (max-width: 576px) 
+{
+    html 
+    {
+        font-size: 7px;
+    }
+}
+
+@media only screen and (max-width: 500px) 
+{
+    .bag-heading
+    {
+        width: 100%;
+        height: fit-content;
+        margin-bottom: 4rem;
+        padding: 0.75rem 0;
+    }
+
+    .item
+    {
+        height: fit-content;
+
+        padding: 1.5rem 1.25rem;
+    }
+
+    .item-image-container
+    {
+        height: 12rem;
+        width: 12rem;
+    }
+
+    .item-column
+    {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .item-column-final
+    {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+
+        display: flex;
+    }
+
+    .item-column-final .item-details-row
+    {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .item-final-big
+    {
+        display: none;
+    }
+
+    .item-final-small
+    {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 410px) 
+{
+    .item
+    {
+        height: fit-content;
+    }
+}
+
+@media only screen and (max-width: 348px) 
+{
+    .item
+    {
+        height: fit-content;
+    }
+}

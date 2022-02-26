@@ -1,0 +1,17 @@
+.container.initial-container
+{
+    min-height: 87.5vh;
+}
+
+.field .display.form-input
+{
+    width: 100%;
+}
+
+label
+{
+    display: block;
+    
+    text-align: center;
+    font-size: 2.5rem;
+}

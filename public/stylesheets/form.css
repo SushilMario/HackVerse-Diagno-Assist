@@ -1,0 +1,114 @@
+/* Theme colour #553328 */
+
+body
+{
+    color: #FAF9F9;
+}
+
+body::before
+{
+    background-position: center;
+}
+
+.ui.form
+{
+    font-size: 1.75rem;
+}
+
+.form-heading
+{
+    text-align: center;
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+
+    font-weight: 700;
+}
+
+/* .ui.form .field
+{
+    width: 100%;
+    display: inline-block;
+    height: 7.5rem;
+
+    text-align: center;
+    margin: 1.5rem 0;
+} */
+
+.display-container
+{
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ui.form textarea
+{
+    resize: none;
+
+    color: #553328;
+    font-size: 2rem;
+}
+
+.ui.button.login
+{
+    margin: 1rem 0;
+}
+
+.ui.button.submit
+{
+    font-size: 2rem;
+}
+
+@keyframes render
+{
+    0%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 1198px) 
+{
+    .form-container
+    {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 992px) 
+{
+    .form-container
+    {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 768px) 
+{
+    html 
+    {
+        font-size: 8px;
+    }
+
+    .form-container
+    {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 576px) 
+{
+    .form-container
+    {
+        margin-top: 35%;
+        
+        width: 95%;
+    }
+}

@@ -1,0 +1,54 @@
+<%- include("../partials/header"); %>
+
+<link rel="stylesheet" href="/stylesheets/form.css">
+<link rel="stylesheet" href="/stylesheets/app.css">
+<link rel="stylesheet" href="/stylesheets/longForm.css">
+<link rel="stylesheet" href="/stylesheets/portal.css">
+
+<style>
+    @media only screen and (max-width: 768px) 
+    {
+        .footer-container
+        {
+            margin-top: 40rem;
+        }
+    }
+</style>
+
+<%- include("../partials/navbar"); %>
+
+<div class="container initial-container">
+    <div class="form-container mt-5">
+        <h1 class = "form-heading mb-4">Pay with Google Pay</h1>
+        <div class="display-container phone">
+            <h2 class = "mb-5 text-center">Open in the Google Pay app to continue</h2>
+            <div class="field">
+                <label for = "phoneDisplay" class="label display-label bold">Transfer to this number</label>
+                <input class = "form-input display mb-3" type="text" id = "phoneDisplay" value = "<%= number %>">
+            </div>
+            <button class = "ui button mb-5" id = "phoneCopy">Copy</button>
+
+            <div class="field">
+                <label for = "amountDisplay" class="label display-label bold">Total Amount</label>
+                <input class = "form-input display mb-3" type="text" id = "amountDisplay" value = "<%= total %>">
+            </div>
+            <button class = "ui button" id = "amountCopy">Copy</button>
+        </div>
+        <div class="display-container other">
+            <div class="image"></div>
+
+            <div class="field">
+                <label for = "amountDisplay" class="label display-label bold">Total Amount</label>
+                <input class = "form-input display mb-3" type="text" id = "amountDisplay" value = "<%= total %>">
+            </div>
+        </div>
+    </div>
+
+    <div class = "mt-2 text-center">
+        <a href="/payments/finish" class="ui button">Done</a>
+    </div>
+</div>
+
+<script src = "/scripts/gpayCopy.js"></script>
+
+<%- include("../partials/footer"); %>

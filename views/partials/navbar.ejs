@@ -1,0 +1,62 @@
+</head>
+    
+<body>
+    <nav class="navbar navbar-expand-md navbar-light">
+        <a class = "navbar-brand" href = "/">
+            <img class = "brand-image" src="https://res.cloudinary.com/dyokara/image/upload/v1610269490/App/logo1_ijmrsq.png">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-container" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navigation-container">
+            <ul class="navbar-nav left">
+                <li class="nav-item">
+                    <a class="nav-link" href = "/products">Products</a>
+                </li>
+                <% if(currentUser){ %>
+                    <li class="nav-item">
+                        <a class="nav-link" href = "/users/<%= currentUser._id %>/cart">Cart(<%= currentUser.cart.length %>)</a>
+                    </li>
+                <% } %>
+            </ul>
+
+            <ul class="navbar-nav center ml-auto mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link pl-0" href = "/">
+                        <img class = "brand-image" src="https://res.cloudinary.com/dyokara/image/upload/v1610269490/App/logo1_ijmrsq.png">
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav right">
+                <% if(currentUser){ %>
+                    <li class="nav-item">
+                        <a class="nav-link" href = "/users/<%= currentUser._id %>/wishlist">Wishlist(<%= currentUser.wishlist.length %>)</a>
+                    </li>
+
+                    <li class="nav-item dropdown" id = "navDropdown">
+                        <div class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <%= currentUser.username %>
+                        </div>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href = "/logout">Log Out</a>
+                            <a class="dropdown-item" href = "/login/details/edit">Edit Details</a>
+                            <a class="dropdown-item" href = "/orderHistory">Order History</a>
+                            <% if(currentUser.isAdmin){ %>
+                                <a class="dropdown-item" href = "/orders">Orders</a>
+                                <a class="dropdown-item" href = "/categories">Catalogue</a>
+                                <a class="dropdown-item" href = "/info">Info</a>
+                                <a class="dropdown-item" href = "/notify/products">Notify</a>
+                            <% } %>
+                        </div>
+                    </li>
+                <% }else{ %>
+                    <li class="nav-item">
+                        <a class="nav-link" href = "/login">Sign In</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
