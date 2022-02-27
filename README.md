@@ -1,7 +1,7 @@
 # Hackverse-Diagno-Assist
 
 ## Description:
-  An e-commerce application for home decor with full pledged functionality including cart, cutomer reviews, wishlist and with an online payment option.
+  An application for easy patient-doctor interaction and diagnosis, facilitated by an interactive web application, that allows for smart diagnosis with AI
   
 ## Tech Stack:
   Backend: NODE.js
@@ -31,4 +31,4 @@
   cloudinary
   
 ## Decalaration:
-  
+    
