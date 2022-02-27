@@ -13,7 +13,7 @@ const {storage} = require("../cloudinary");
 const middleware = require("../middleware");
 const User = require("../models/User.js");
 const Tracking = require("../models/Tracking.js");
-const Line_up = require("../models/Line_up.js");
+const Line_up = require("../models/Department.js");
 const Category = require("../models/Category.js");
 
 const upload = multer({storage});

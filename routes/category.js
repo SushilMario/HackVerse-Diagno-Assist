@@ -6,7 +6,7 @@ const User = require("../models/User.js");
 const Tracking = require("../models/Tracking.js");
 
 const Category = require("../models/Category.js");
-const Line_up = require("../models/Line_up.js");
+const Line_up = require("../models/Department.js");
 const Product = require("../models/Product.js");
 
 const router = express.Router();
