@@ -60,53 +60,25 @@ let UserSchema = new mongoose.Schema
             }
         },
 
-        cart:
+        appointments:
+        [
+            {
+                appointment:
+                {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "Appointment"
+                }
+            }
+        ],
+
+		diagnoses:
         [
             {
                 product:
                 {
                     type: mongoose.Schema.Types.ObjectId,
-                    ref: "Product"
-                },
-                quantity:
-                {
-                    type: Number,
-                    default: 1
-                },
-                customisation:
-                {
-                    type: String,
-                    default: "None"
+                    ref: "Diagnosis"
                 }
-            }
-        ],
-
-		wishlist:
-        [
-            {
-                product:
-                {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: "Product"
-                },
-                quantity:
-                {
-                    type: Number,
-                    default: 1
-                },
-                customisation:
-                {
-                    type: String,
-                    default: "None"
-                }
-            }
-        ],
-
-        orderHistory:
-        [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Order"
             }
         ]
     }
