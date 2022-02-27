@@ -1,0 +1,49 @@
+<%- include("../partials/header"); %>
+
+    <link rel="stylesheet" href="/stylesheets/form.css">
+    <link rel="stylesheet" href="/stylesheets/auth.css">
+    <link rel="stylesheet" href="/stylesheets/longForm.css">
+
+</head>
+    
+<body>
+    <div class="container initial-container pt-5">
+        <div class="form-container mt-0">
+            <h1 class = "form-heading mb-5">Enter your details</h1>
+            <form action="/records" method="POST" class="ui form">
+                <div class="field">
+                    <label class = "label" for = "patient[username]">Patient Username</label>
+                    <input class = "form-input" type="text" name="patient[username]" id = "patient[username]" placeholder = "Patient's issued username" required>
+                </div>
+
+                <div class="field">
+                    <label class = "label" for = "patient[age]">Patient Age</label>
+                    <input class = "form-input" type="text" name="patient[age]" id = "patient[age]" required>
+                </div>
+
+                <div class="field">
+                    <label class = "label" for = "patient[height]">Patient Height (in cm)</label>
+                    <input class = "form-input" type="text" name="patient[height]" id = "patient[height]" required>
+                </div>
+
+                <div class="field">
+                    <label class = "label" for = "patient[weight]">Patient Weight (in kg)</label>
+                    <input class = "form-input" type="text" name="patient[weight]" id = "patient[weight]" required>
+                </div>
+
+                <div class="field">
+                    <label for="photo_uploads">Choose photo to upload (PNG, JPG)</label>
+                    <input type="file" id="photo_uploads" name="photo" required>
+                </div>
+                
+                <div class="field">
+                    <label for="image_uploads">Choose images to upload (PNG, JPG)</label>
+                    <input type="file" id="image_uploads" name="images" multiple required>
+                </div>
+                
+                <button class = "ui button submit mt-3" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+<%- include("../partials/footer"); %>
