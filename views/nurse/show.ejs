@@ -1,0 +1,18 @@
+<%- include("../partials/header"); %>
+
+    <link rel="stylesheet" href="/stylesheets/form.css">
+    <link rel="stylesheet" href="/stylesheets/auth.css">
+    <link rel="stylesheet" href="/stylesheets/longForm.css">
+
+</head>
+    
+<body>
+    <div class="container initial-container pt-5">
+        <div class="form-container mt-0">
+            <h1 class = "form-heading mb-5">Hello, <%= nurse.name %>!</h1>
+            
+            <a href = "/records/new" class = "ui button mt-3">New Record</a>
+        </div>
+    </div>
+
+<%- include("../partials/footer"); %>

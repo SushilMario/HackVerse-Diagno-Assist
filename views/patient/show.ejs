@@ -6,7 +6,7 @@
 
 <div class="container initial-container">
     <div class = "box header-box">
-        <div class = "main-heading"><a href = "/categories" class = "link"><%= category.name %></a></div>
+        <div class = "sub-heading">Upcoming Appointments></div>
     </div>
 
     <% if(appointments.length != 0){ %>
@@ -37,27 +37,49 @@
                 <div class="feature-details number">
                     <span class = "feature-field"><%= appointment.timeSlotStart %> - <%= appointment.timeSlotEnd %></span>
                 </div>
-                
-                <div class="feature-status">
-                    <a href = "/appointments/<%= appointment._id %>/edit" class="ui button feature-status">
-                        <i class = "fas fa-edit"></i>
-                    </a>
+            </div>
+        <% }) %>
+    <% }else{ %>
+        <div class = "col-12 text-center display-4">You have no upcoming appointments</div>
+    <% } %>
+
+    <div class = "my-5">
+        <a href="/patients/<%= patient._id %>/appointments/new" class="ui button">New appointment</a>
+    </div>
+
+    <% if(diagnoses.length != 0){ %>
+        <div class = "feature feature-header">
+            <div class="feature-details">
+                <span class = "feature-field">Date of diagnosis</span>
+            </div>
+
+            <div class="feature-details">
+                <span class = "feature-field">Name of Doctor</span>
+            </div>
+    
+            <div class="feature-details">
+                <span class = "feature-field">Diagnosis</span>
+            </div>
+        </div>
+
+        <% diagnoses.forEach(diagnosis => { %>
+            <div class = "feature">
+                <div class="feature-details number">
+                    <a href = "/diagnoses/<%= diagnosis._id %>" class = "feature-field link"><%= diagnosis.diagnosisDate %></a>
                 </div>
 
-                <div class="feature-status">
-                    <a href = "/appointments/<%= appointment._id %>/edit/production" class="ui button feature-status">
-                        <i class="fas fa-hammer"></i>
-                    </a>
+                <div class="feature-details number">
+                    <span class = "feature-field"><%= diagnosis.consultingDoctor %></span>
+                </div>
+        
+                <div class="feature-details number">
+                    <span class = "feature-field"><%= diagnosis.timeSlotStart %> - <%= diagnosis.name %></span>
                 </div>
             </div>
         <% }) %>
     <% }else{ %>
-        <div class = "col-12 text-center display-4">No appointments yet!</div>
+        <div class = "col-12 text-center display-4">You have no diagnoses</div>
     <% } %>
-
-    <div class = "my-5">
-        <a href="/categories/<%= category._id %>/appointments/new" class="ui button">New appointment</a>
-    </div>
 </div>
 
 <%- include("../partials/footer"); %>
