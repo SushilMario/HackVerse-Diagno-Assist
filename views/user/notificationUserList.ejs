@@ -6,42 +6,72 @@
 
 <div class="container initial-container">
     <div class = "box header-box">
-        <div class = "main-heading">Users</div>
+        <div class = "main-heading">Patient</div>
     </div>
 
-    <% if(notificationList.length != 0){ %>
-        <div class = "order order-header">
-            <div class="order-details">
-                <span class = "order-field">Username</span>
-            </div>
-
-            <div class="order-details">
-                <span class = "order-field">Phone Number</span>
-            </div>
-    
-            <div class="order-details">
-                <span class = "order-field">Email</span>
-            </div>
+    <div class = "order order-header">
+        <div class="order-details">
+            <span class = "order-field">Username</span>
         </div>
 
-        <% notificationList.forEach(user => { %>
-            <div class = "order">
-                <div class="order-details number">
-                    <span class = "order-field"><%= user.username %></span>
-                </div>
+        <div class="order-details">
+            <span class = "order-field">Phone Number</span>
+        </div>
 
-                <div class="order-details number">
-                    <span class = "order-field"><%= user.phoneNumber %></span>
-                </div>
+        <div class="order-details">
+            <span class = "order-field">Email</span>
+        </div>
+    </div>
 
-                <div class="order-details number">
-                    <span class = "order-field"><%= user.email %></span>
-                </div>
+    <% notificationPatientList.forEach(patient => { %>
+        <div class = "order">
+            <div class="order-details number">
+                <span class = "order-field"><%= patient.username %></span>
             </div>
-        <% }) %>
-    <% }else{ %>
-        <div class = "col-12 text-center display-4">No customers to notify!</div>
-    <% } %>
+
+            <div class="order-details number">
+                <span class = "order-field"><%= patient.phoneNumber %></span>
+            </div>
+
+            <div class="order-details number">
+                <span class = "order-field"><%= patient.email %></span>
+            </div>
+        </div>
+    <% }) %>
+
+    <div class = "box header-box">
+        <div class = "main-heading">Doctor</div>
+    </div>
+
+    <div class = "order order-header">
+        <div class="order-details">
+            <span class = "order-field">Username</span>
+        </div>
+
+        <div class="order-details">
+            <span class = "order-field">Phone Number</span>
+        </div>
+
+        <div class="order-details">
+            <span class = "order-field">Email</span>
+        </div>
+    </div>
+
+    <% notificationDoctorList.forEach(doctor => { %>
+        <div class = "order">
+            <div class="order-details number">
+                <span class = "order-field"><%= doctor.username %></span>
+            </div>
+
+            <div class="order-details number">
+                <span class = "order-field"><%= doctor.phoneNumber %></span>
+            </div>
+
+            <div class="order-details number">
+                <span class = "order-field"><%= doctor.email %></span>
+            </div>
+        </div>
+    <% }) %>
 </div>
 
 <%- include("../partials/footer"); %>
